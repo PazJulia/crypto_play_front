@@ -1,0 +1,131 @@
+body,
+ul,
+li {
+    font-family: "Segoe UI", serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: var(--darker-primary);
+}
+
+.theme-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--lighter-primary);
+}
+
+header {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title {
+    color: var(--secondary-color);
+    width: 100%;
+    padding: 2px 0;
+    position: sticky;
+    top: 0;
+    border-bottom: 1.5px solid var(--lighter-primary);
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 55em) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .grid-col-span-2 {
+        grid-column: span 2;
+    }
+}
+
+
+.sidebar {
+}
+
+.addBtn {
+    background-color: var(--lighter-primary);
+    color: var(--sixth-color);
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addBtn:hover {
+    background-color: var(--secondary-color);
+}
+
+card {
+    display: flex;
+    justify-content: center;
+    word-break-wrap: break-word;
+    margin: 0;
+    color: var(--sixth-color);
+    padding: 1rem;
+    background-color: var(--primary-color);
+    border: 1.5px solid var(--lighter-primary);
+    border-radius: 1rem;
+}
+
+select, option, input {
+    font-size: large;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    color: var(--sixth-color);
+    background-color: var(--darker-primary);
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+}
+
+option:focus {
+    background-color: var(--secondary-color);
+}
+
+button {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+/* Estilização do contêiner principal */
+.container {
+    max-width: 1200px; /* Limita a largura máxima em telas grandes */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 0 1rem; /* Adiciona um espaçamento interno nas laterais */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 0.5rem; /* Reduz o espaçamento em telas pequenas */
+        border-left: none; /* Remove bordas laterais em telas menores */
+        border-right: none;
+    }
+}

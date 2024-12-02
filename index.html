@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAwesome via CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>CryptoPlay</title>
+</head>
+
+<body data-theme="dark">
+<!-- Cabeçalho de informações do sistema -->
+<header>
+    <div class="title flex-row">
+        <i class="fas fa-coins" style="font-size:30px"></i>
+        <h1>CryptoPLAY</h1>
+        <span id="themeIcon" class="theme-icon"><i class="fas fa-sun"></i></span>
+    </div>
+</header>
+<div class="container">
+
+    <!-- Opções para adicionar um novo ítem -->
+    <div class="grid">
+        <aside class="sidebar">
+            <card class="flex-column">
+                Saldo disponível
+                <div><strong>BRL: </strong> 130.55</div>
+            </card>
+        </aside>
+        <section class="search grid-col-span-2">
+            <card>
+                <label for="cars"></label>
+                <select id="cars" name="cars" style="min-width: 300px">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <button onclick="newItem()" class="addBtn">
+                    <strong>Buscar</strong>
+                </button>
+            </card>
+        </section>
+        <aside class="sidebar">
+            <card class="flex-column">
+                Saldo disponível
+                <div><strong>BRL: </strong> 130.55</div>
+            </card>
+        </aside>
+    </div>
+</div>
+
+<script src="scripts.js"></script>
+
+
+
+</body>
+
+</html>
+

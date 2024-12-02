@@ -1,0 +1,45 @@
+:root {
+    /* Dark Theme (default) */
+    --primary-color: #0b112f;
+    --secondary-color: #a940d9;
+    --tertiary-color: #87fffd;
+    --fourth-color: #02a2c6;
+    --fifth-color: #000000;
+    --sixth-color: #ffffff;
+    --darker-primary: #02020d;
+    --lighter-primary: #2a2a87;
+
+    --white: #ffffff;
+    --light-gray: #f2f2f2;
+    --gray: #bdc3c7;
+    --dark-gray: #7f8c8d;
+    --black: #000000;
+
+    --warning-color: #f1c40f;
+    --info-color: #5d1abc;
+    --error-color: #e74c3c;
+}
+
+:root.light-theme {
+    --primary-color: #f2faff; /* Very light, soft blue for background */
+    --secondary-color: #915eff; /* Bold lavender for accents */
+    --tertiary-color: #4fc3f7; /* Bright cyan for interactive elements */
+    --fourth-color: #1976d2; /* Strong, darker blue for focus */
+    --fifth-color: #ffffff; /* Pure white for surfaces */
+    --sixth-color: #333333; /* Deep gray for text (better contrast) */
+
+    --darker-primary: #e0f3ff; /* Light pastel blue for subtle depth */
+    --lighter-primary: #b4d0e9; /* Softer version of the light blue */
+
+    /* Grayscale */
+    --white: #ffffff;
+    --light-gray: #f7f7f7; /* Light, neutral gray */
+    --gray: #b0bec5; /* Subtle neutral gray */
+    --dark-gray: #455a64; /* Strong contrast gray */
+    --black: #212121; /* Almost black for text */
+
+    /* Additional Colors */
+    --warning-color: #ffcc80; /* Soft orange for warnings */
+    --info-color: #7c4dff; /* Vibrant purple */
+    --error-color: #ff5252; /* Bright red for errors */
+}
