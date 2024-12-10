@@ -21,15 +21,14 @@
 }
 
 :root.light-theme {
-    --primary-color: #f2faff; /* Very light, soft blue for background */
-    --secondary-color: #915eff; /* Bold lavender for accents */
-    --tertiary-color: #4fc3f7; /* Bright cyan for interactive elements */
-    --fourth-color: #1976d2; /* Strong, darker blue for focus */
-    --fifth-color: #ffffff; /* Pure white for surfaces */
-    --sixth-color: #333333; /* Deep gray for text (better contrast) */
-
-    --darker-primary: #e0f3ff; /* Light pastel blue for subtle depth */
-    --lighter-primary: #b4d0e9; /* Softer version of the light blue */
+    --primary-color: #cfeeff; /* Azul suave, mais claro e equilibrado */
+    --secondary-color: #9b6af5; /* Lavanda menos saturado, mais harmonioso com o azul */
+    --tertiary-color: #4eb8d0; /* Ciano suave, criando uma transição tranquila entre o azul e verde */
+    --fourth-color: #1565c0; /* Azul mais profundo para destacar elementos em foco */
+    --fifth-color: #f8f9fa; /* Branco suave, menos agressivo que o branco puro */
+    --sixth-color: #444444; /* Cinza escuro mais suave, mas com contraste suficiente para legibilidade */
+    --darker-primary: #eef9ff; /* Azul pastel claro para sutis variações */
+    --lighter-primary: #9fd7ff; /* Versão mais suave do azul claro */
 
     /* Grayscale */
     --white: #ffffff;

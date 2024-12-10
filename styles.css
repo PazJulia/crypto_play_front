@@ -1,6 +1,10 @@
-body,
-ul,
-li {
+:root {
+    --border-radius: 1rem;
+    --padding: 1rem;
+    --solid-border: 1px solid var(--lighter-primary);
+}
+
+body {
     font-family: "Segoe UI", serif;
     box-sizing: border-box;
     margin: 0;
@@ -41,7 +45,7 @@ header {
     padding: 2px 0;
     position: sticky;
     top: 0;
-    border-bottom: 1.5px solid var(--lighter-primary);
+    border-bottom: var(--solid-border);
 }
 
 .grid {
@@ -60,37 +64,56 @@ header {
 }
 
 
-.sidebar {
-}
-
-.addBtn {
-    background-color: var(--lighter-primary);
-    color: var(--sixth-color);
-    text-align: center;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.addBtn:hover {
-    background-color: var(--secondary-color);
-}
-
 card {
     display: flex;
     justify-content: center;
     word-break-wrap: break-word;
     margin: 0;
     color: var(--sixth-color);
-    padding: 1rem;
     background-color: var(--primary-color);
-    border: 1.5px solid var(--lighter-primary);
-    border-radius: 1rem;
+    border: var(--solid-border);
+    border-radius: var(--border-radius);
+    padding: var(--padding);
 }
 
-select, option, input {
+.sidebar {
+    display: grid;
+    gap: 1rem;
+}
+
+.search-card {
+    align-items: baseline;
+}
+
+.search-btn {
+    background-color: var(--lighter-primary);
+    color: var(--sixth-color);
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    height: 49px;
+}
+
+.search-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.input-wrapper {
+    margin: 0;
+    padding: 0;
+    display: unset;
+    height: fit-content;
+}
+
+button,
+input {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+}
+
+option, input {
     font-size: large;
-    padding: 0.5rem 1rem;
     margin: 0.5rem;
     color: var(--sixth-color);
     background-color: var(--darker-primary);
@@ -99,19 +122,47 @@ select, option, input {
     cursor: pointer;
 }
 
-select:focus {
-    outline: none;
-}
-
-option:focus {
-    background-color: var(--secondary-color);
-}
-
 button {
     padding: 0.5rem 1rem;
-    margin: 0.5rem;
     border: none;
     border-radius: 1rem;
+}
+
+.results {
+    padding: 0;
+    margin: 0.5rem;
+    background-color: var(--darker-primary);
+    display: block;
+    position: absolute;
+    max-width: max-content;
+    max-height: 200px; /* Set the desired height */
+    overflow-y: auto; /* Enables vertical scrolling when content overflows */
+    width: 100%; /* Optional: makes the container full-width */
+    scrollbar-width: thin; /* For modern browsers to make the scrollbar thinner */
+    -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+}
+
+.results ul {margin: 0; padding: 0; }
+.results ul li {
+    list-style: none;
+    border-radius: 3px;
+    opacity: 0;
+    display: none;
+    padding: 8px 12px;
+    transition: all .5s linear;
+}
+
+.show .results ul li {
+    opacity: 1;
+    display: block;
+}
+
+.show .results {
+    padding: 10px;
+}
+
+.results ul li:hover {
+    background: #ececec
 }
 
 /* Estilização do contêiner principal */
