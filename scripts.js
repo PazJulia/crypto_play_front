@@ -4,6 +4,7 @@ const baseUrl = `http://127.0.0.1:5000`;
 // Elementos HTML relacionados à busca e informações da moeda
 const searchWrapper = document.querySelector('.input-wrapper');
 const infoMoedaWrapper = document.querySelector('.coin-info');
+const moedasAdicionadasWrapper = document.querySelector('.added-coins');
 
 /**
  * Função a ser chamada na inicialização para buscar dados de saldo e moedas do usuário
@@ -11,7 +12,7 @@ const infoMoedaWrapper = document.querySelector('.coin-info');
 function buscarDadosUsuario() {
     const url = `${baseUrl}/usuario`;
 
-    fetch(url, { method: 'GET' })
+    fetch(url, {method: 'GET'})
         .then(response => response.json())
         .then(data => renderizarUserInfo(data))
         .catch(err => console.log(err));
@@ -24,12 +25,45 @@ function buscarDadosUsuario() {
 */
 buscarDadosUsuario();
 
+/**
+ * Função que renderiza infos do Usuário
+ * @param {Object} data - Objeto contendo dados de moeda.
+ * @param {string} data.coin_gecko_id - O ID único da moeda.
+ * @param {number} data.cota - Valor da cota comprada.
+ * @param {string} data.nome - Nome da moeda.
+ * @param {string} data.simbolo_url - Url para renderizar ícone da moeda.
+ */
 function renderizarUserInfo(data) {
     let saldo = document.getElementById('saldo-disponivel');
     let balanco = document.getElementById('balanco-total');
 
     saldo.textContent = data.saldo_disponivel;
     balanco.textContent = data.balanco_total;
+
+    // Verificar se possui filhos e remover
+    while (moedasAdicionadasWrapper.firstChild) {
+        moedasAdicionadasWrapper.removeChild(moedasAdicionadasWrapper.firstChild);
+    }
+
+    const existemMoedas = data.moedas.length > 0;
+    if (existemMoedas) {
+        data.moedas?.forEach(moeda => {
+            const cardMoeda = document.createElement('div');
+            cardMoeda.classList.add('card');
+            cardMoeda.innerHTML = `<div class="flex flex-column align-center gap-1">
+                    <div class="flex flex-row gap-05"><img src="${moeda.simbolo_url}" alt="${moeda.nome}" class="coin-image" />
+                    <strong>${moeda.nome}</strong></div>
+                    <span><strong>Cota:</strong> ${moeda.cota}</span>
+                </div>`;
+
+            // Adiciona um evento de clique para cada item
+            /*li.addEventListener('click', () => {
+                handleItemClick(item); // Passa o item completo para o evento de clique
+            });
+*/
+            moedasAdicionadasWrapper.appendChild(cardMoeda);
+        })
+    }
 }
 
 /**
@@ -63,11 +97,11 @@ function buscarMoedas() {
  * @param {string} inputCoin - O nome ou símbolo da moeda a ser buscada.
  */
 async function searchCoin(inputCoin) {
-    const params = new URLSearchParams({ nome: inputCoin });
+    const params = new URLSearchParams({nome: inputCoin});
     const url = `${baseUrl}/moeda?${params.toString()}`;
 
     try {
-        const response = await fetch(url, { method: 'GET' });
+        const response = await fetch(url, {method: 'GET'});
         const data = await response.json();
         renderResults(data.coins);
     } catch (error) {

@@ -14,9 +14,19 @@
 <body data-theme="dark">
 <!-- Cabeçalho de informações do sistema -->
 <header>
-    <div class="title flex flex-row justify-center gap-05">
+    <div class="title flex flex-row justify-center gap-1">
         <i class="fas fa-coins" style="font-size:30px"></i>
         <h1>CryptoPLAY</h1>
+
+        <div>
+            <card class="flex flex-column">
+                <div><strong>Saldo disponível: </strong>R$ <span id="saldo-disponivel"></span></div>
+            </card>
+
+            <card class="flex flex-column">
+                <div><strong>Balanço total: </strong>R$ <span id="balanco-total"></span></div>
+            </card>
+        </div>
 
         <!-- Opção para controlar tema da página (escuro/claro) -->
         <span id="themeIcon" class="theme-icon"><i class="fas fa-sun"></i></span>
@@ -24,18 +34,7 @@
 </header>
 <div class="container">
     <div class="grid">
-        <aside class="sidebar">
-            <card class="flex card flex-column">
-                Saldo disponível
-                <div><strong>BRL: </strong> <span id="saldo-disponivel"></span></div>
-            </card>
-
-            <card class="flex card flex-column">
-                Balanço total de moedas
-                <div><strong>BRL: </strong> <span id="balanco-total"></span></div>
-            </card>
-        </aside>
-        <section class="search grid-col-span-2 flex flex-column">
+        <section class="search grid-col-span-4 flex flex-column">
             <card class="flex card search-card justify-center">
                 <div class="input-wrapper">
                     <!-- Input para busca de cripto -->
@@ -49,11 +48,9 @@
             </card>
 
             <!-- Componente que apresenta dinamicamente a moeda selecionada à partir da busca -->
-            <div class="coin-info"></div>
+            <div class="coin-info justify-center"></div>
+            <div class="added-coins grid"></div>
         </section>
-        <aside class="sidebar">
-            <div class="added-coins"></div>
-        </aside>
     </div>
 </div>
 
