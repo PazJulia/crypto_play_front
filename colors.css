@@ -1,5 +1,5 @@
 :root {
-    /* Dark Theme (default) */
+    /* Tema escuro (default) */
     --primary-color: #0b112f;
     --secondary-color: #a940d9;
     --tertiary-color: #87fffd;
@@ -21,24 +21,21 @@
 }
 
 :root.light-theme {
-    --primary-color: #cfeeff; /* Azul suave, mais claro e equilibrado */
-    --secondary-color: #9b6af5; /* Lavanda menos saturado, mais harmonioso com o azul */
-    --tertiary-color: #4eb8d0; /* Ciano suave, criando uma transição tranquila entre o azul e verde */
-    --fourth-color: #1565c0; /* Azul mais profundo para destacar elementos em foco */
-    --fifth-color: #f8f9fa; /* Branco suave, menos agressivo que o branco puro */
-    --sixth-color: #444444; /* Cinza escuro mais suave, mas com contraste suficiente para legibilidade */
-    --darker-primary: #eef9ff; /* Azul pastel claro para sutis variações */
-    --lighter-primary: #9fd7ff; /* Versão mais suave do azul claro */
+    --primary-color: #cfeeff;
+    --secondary-color: #9b6af5;
+    --tertiary-color: #4eb8d0;
+    --fifth-color: #f8f9fa;
+    --sixth-color: #444444;
+    --darker-primary: #eef9ff;
+    --lighter-primary: #9fd7ff;
 
-    /* Grayscale */
     --white: #ffffff;
-    --light-gray: #f7f7f7; /* Light, neutral gray */
-    --gray: #b0bec5; /* Subtle neutral gray */
-    --dark-gray: #455a64; /* Strong contrast gray */
-    --black: #212121; /* Almost black for text */
+    --light-gray: #f7f7f7;
+    --gray: #b0bec5;
+    --dark-gray: #455a64;
+    --black: #212121;
 
-    /* Additional Colors */
-    --warning-color: #ffcc80; /* Soft orange for warnings */
-    --info-color: #7c4dff; /* Vibrant purple */
-    --error-color: #ff5252; /* Bright red for errors */
+    --warning-color: #ffcc80;
+    --info-color: #7c4dff;
+    --error-color: #ff5252;
 }
