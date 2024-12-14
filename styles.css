@@ -113,6 +113,13 @@ header {
     background-color: var(--secondary-color);
 }
 
+.secondary-btn {
+    margin-left: 1rem;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    background-color: var(--error-color);
+}
+
 .input-wrapper {
     margin: 0;
     padding: 0;
@@ -180,9 +187,18 @@ button {
     background: #ececec
 }
 
+.coin-card {
+    display: flex;
+    justify-content: center;
+}
+
 .coin-image {
     height: 25px;
     width: 25px;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 /* Estilização do contêiner principal */

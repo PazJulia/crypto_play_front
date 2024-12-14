@@ -31,10 +31,6 @@ Clique [aqui](index.html) para acessar o arquivo diretamente e começar a usar a
 
 Este projeto utiliza a [API CoinGecko](https://docs.coingecko.com/) para buscar informações sobre criptomoedas em tempo real. A API fornece dados como o preço atual, histórico, volume de negociação, entre outros.
 
-## Licença
-
-Este projeto está disponível sob a licença MIT.
-
 ## Créditos
 
 - **CoinGecko API**: A API CoinGecko foi utilizada para fornecer os dados das criptomoedas. Mais informações podem ser encontradas na [documentação oficial](https://docs.coingecko.com/).

@@ -37,8 +37,8 @@ function renderizarUserInfo(data) {
     let saldo = document.getElementById('saldo-disponivel');
     let balanco = document.getElementById('balanco-total');
 
-    saldo.textContent = data.saldo_disponivel;
-    balanco.textContent = data.balanco_total;
+    saldo.textContent = formatCurrencyBRL(data.saldo_disponivel);
+    balanco.textContent = formatCurrencyBRL(data.balanco_total);
 
     // Verificar se possui filhos e remover
     while (moedasAdicionadasWrapper.firstChild) {
@@ -50,20 +50,35 @@ function renderizarUserInfo(data) {
         data.moedas?.forEach(moeda => {
             const cardMoeda = document.createElement('div');
             cardMoeda.classList.add('card');
-            cardMoeda.innerHTML = `<div class="flex flex-column align-center gap-1">
+            cardMoeda.innerHTML = `<div class="flex flex-column align-center gap-1 pointer">
                     <div class="flex flex-row gap-05"><img src="${moeda.simbolo_url}" alt="${moeda.nome}" class="coin-image" />
                     <strong>${moeda.nome}</strong></div>
                     <span><strong>Cota:</strong> ${moeda.cota}</span>
                 </div>`;
 
             // Adiciona um evento de clique para cada item
-            /*li.addEventListener('click', () => {
-                handleItemClick(item); // Passa o item completo para o evento de clique
+            cardMoeda.addEventListener('click', () => {
+                buscarInfosAtualizadas(moeda)
             });
-*/
+
             moedasAdicionadasWrapper.appendChild(cardMoeda);
         })
     }
+}
+
+function buscarInfosAtualizadas(moeda) {
+    const url = encodeURI(`${baseUrl}/moeda/info?coin_gecko_id=${encodeURIComponent(moeda.coin_gecko_id)}`);
+
+    let coin = {
+        id: moeda.coin_gecko_id,
+        name: moeda.nome,
+        thumb: moeda.simbolo_url,
+        symbol: moeda.coin_gecko_id
+    }
+    fetch(url, {method: 'GET'})
+        .then(response => response.json())
+        .then(data => createCoinCard(coin, data, true))
+        .catch(err => console.log(err));
 }
 
 /**
@@ -174,7 +189,7 @@ function comprar(value, coin, price) {
     if (!value.length) alert("Insira o valor");
     else {
         const formData = new FormData();
-        formData.append('coin_gecko_id', coin.symbol);
+        formData.append('coin_gecko_id', coin.id);
         formData.append('nome', coin.name);
         formData.append('simbolo_url', coin.thumb);
         formData.append('valor_moeda', price[coin.id]['brl']);
@@ -207,6 +222,17 @@ function removerCoinCard() {
     infoMoedaWrapper.classList.remove('card');
 }
 
+function removerMoeda(id) {
+    const url = encodeURI(`${baseUrl}/moeda/del?coin_gecko_id=${encodeURIComponent(id)}`);
+    fetch(url, {method: 'DELETE'})
+        .then(response => response.json())
+        .then(() => {
+            removerCoinCard();
+            buscarDadosUsuario();
+        })
+        .catch(error => console.log(error));
+}
+
 /**
  * Cria e exibe um card com informações detalhadas sobre uma moeda.
  * @param {Object} coin - O objeto que contém os dados da moeda.
@@ -215,8 +241,9 @@ function removerCoinCard() {
  * @param {string} coin.name - O nome da moeda.
  * @param {string} coin.symbol - O símbolo da moeda.
  * @param {string} coin.thumb - A URL da imagem da moeda.
+ * @param shouldShowRemoveButton - Booleano com valor padrão falso para renderizar o botão remover condicionalmente
  */
-function createCoinCard(coin, price) {
+function createCoinCard(coin, price, shouldShowRemoveButton = false) {
     // Limpa o cartão existente, se houver
     removerCoinCardChild();
 
@@ -228,20 +255,32 @@ function createCoinCard(coin, price) {
 
     // Define o conteúdo do cartão
     card.innerHTML = `
-        <div class="flex flex-column">
-            <div class="flex justify-space-between flex-wrap align-center">
-                <div class="flex align-center gap-1">
-                    <img src="${coin.thumb}" alt="${coin.name}" class="coin-image" />
-                    <strong>${coin.name} (${coin.symbol.toUpperCase()})</strong>
-                </div>
-                <span>${transformedCoinPrice}</span>
+    <div class="flex flex-column">
+        <div class="flex justify-space-between flex-wrap align-center">
+            <div class="flex align-center gap-1">
+                <img src="${coin.thumb}" alt="${coin.name}" class="coin-image" />
+                <strong>${coin.name} (${coin.symbol.toUpperCase()})</strong>
             </div>
-            <div class="flex flex-row flex-wrap">
-                <input type="text" id="buy-coin-input" placeholder="Digite um valor" />
-                <button id="buy-coin-btn" class="primary-btn">Comprar</button>
-            </div>
+            <span>${transformedCoinPrice}</span>
         </div>
+        <div class="flex flex-row flex-wrap">
+            <input type="text" id="buy-coin-input" placeholder="Digite um valor" />
+            <button id="buy-coin-btn" class="primary-btn">Comprar</button>
+            
+            ${shouldShowRemoveButton ?
+        `<i id="remove-coin-btn" class="button secondary-btn fas fa-ban"></i>` : ''}
+        </div>
+        </div>
+    </div>
     `;
+
+    // Se você precisa associar um evento ao botão "Remover"
+    if (shouldShowRemoveButton) {
+        const removeButton = card.querySelector('#remove-coin-btn');
+        removeButton.addEventListener('click', () => {
+            removerMoeda(coin.id);
+        });
+    }
 
     // Adiciona o cartão à interface
     infoMoedaWrapper.classList.add('card');
