@@ -157,11 +157,11 @@ button {
     display: block;
     position: absolute;
     max-width: max-content;
-    max-height: 200px; /* Set the desired height */
-    overflow-y: auto; /* Enables vertical scrolling when content overflows */
-    width: 100%; /* Optional: makes the container full-width */
-    scrollbar-width: thin; /* For modern browsers to make the scrollbar thinner */
-    -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
 }
 
 .results ul {margin: 0; padding: 0; }
